@@ -14,9 +14,9 @@ services:
       dockerfile: .dockerdev/Dockerfile
       target: production
       args:
-        RUBY_VERSION: '2.7.0'
-        PG_MAJOR: '11'
-        NODE_MAJOR: '13'
+        RUBY_VERSION: '3.2.2'
+        PG_MAJOR: '16'
+        NODE_MAJOR: '20'
         YARN_VERSION: '1.22.5'
         BUNDLER_VERSION: '2.1.4'
     environment:
@@ -57,7 +57,7 @@ services:
       retries: 5
 
   redis:
-    image: redis:3.2-alpine
+    image: redis:7.2.5
     volumes:
       - redis:/data
     ports:

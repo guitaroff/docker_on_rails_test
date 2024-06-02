@@ -13,7 +13,7 @@ services:
         condition: service_started
 
   postgres:
-    image: postgres:10.11-alpine
+    image: postgres:16.3
     container_name: docker_on_rails_test_postgres
     volumes:
       - postgres:/var/lib/postgresql/data
@@ -27,7 +27,7 @@ services:
       retries: 5
 
   redis:
-    image: redis:4.0.9-alpine
+    image: redis:7.2.5
     container_name: docker_on_rails_test_redis
     volumes:
       - redis:/data
@@ -40,7 +40,7 @@ services:
       retries: 30
 
   selenium:
-    image: selenium/standalone-chrome-debug:3.141.59
+    image: selenium/standalone-chrome:latest
     container_name: docker_on_rails_test_chrome
     ports:
         - 4444:4444
