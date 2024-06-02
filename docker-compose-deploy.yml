@@ -34,7 +34,7 @@ services:
         condition: service_healthy
       redis:
         condition: service_healthy
-    image: docker_on_rails2:1.0.0
+    image: docker_on_rails_test:1.0.0
     healthcheck:
       test: curl -sS http://localhost:3000/healthcheck || exit 1
       interval: 30s
@@ -43,7 +43,7 @@ services:
 
   green:
     <<: *app
-    image: docker_on_rails2:1.0.1
+    image: docker_on_rails_test:1.0.1
 
   postgres:
     image: postgres:10.11-alpine

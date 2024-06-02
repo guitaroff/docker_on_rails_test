@@ -12,7 +12,7 @@ services:
         NODE_MAJOR: '13'
         YARN_VERSION: '1.22.5'
         BUNDLER_VERSION: '2.1.4'
-    image: docker_on_rails2:1.0.0
+    image: docker_on_rails_test:1.0.0
     tmpfs:
       - /tmp
 
@@ -104,14 +104,14 @@ services:
 
 volumes:
   postgres:
-    name: docker_on_rails2_postgres
+    name: docker_on_rails_test_postgres
   redis:
-    name: docker_on_rails2_redis
+    name: docker_on_rails_test_redis
   bundle:
-    name: docker_on_rails2_bundle
+    name: docker_on_rails_test_bundle
   node_modules:
-    name: docker_on_rails2_node_modules
+    name: docker_on_rails_test_node_modules
   rails_cache:
-    name: docker_on_rails2_rails_cache
+    name: docker_on_rails_test_rails_cache
   packs:
-    name: docker_on_rails2_packs
+    name: docker_on_rails_test_packs

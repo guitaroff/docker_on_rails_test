@@ -14,7 +14,7 @@ services:
 
   postgres:
     image: postgres:10.11-alpine
-    container_name: docker_on_rails2_postgres
+    container_name: docker_on_rails_test_postgres
     volumes:
       - postgres:/var/lib/postgresql/data
       - ../log:/root/log:cached
@@ -28,7 +28,7 @@ services:
 
   redis:
     image: redis:4.0.9-alpine
-    container_name: docker_on_rails2_redis
+    container_name: docker_on_rails_test_redis
     volumes:
       - redis:/data
     ports:
@@ -41,12 +41,12 @@ services:
 
   selenium:
     image: selenium/standalone-chrome-debug:3.141.59
-    container_name: docker_on_rails2_chrome
+    container_name: docker_on_rails_test_chrome
     ports:
         - 4444:4444
 
 volumes:
   postgres:
-    name: docker_on_rails2_volume_postgres
+    name: docker_on_rails_test_volume_postgres
   redis:
-    name: docker_on_rails2_volume_redis
+    name: docker_on_rails_test_volume_redis
