@@ -46,7 +46,7 @@ services:
     image: docker_on_rails_test:1.0.1
 
   postgres:
-    image: postgres:10.11-alpine
+    image: postgres:16.3
     volumes:
       - postgres:/var/lib/postgresql/data
       - ../log:/root/log:cached

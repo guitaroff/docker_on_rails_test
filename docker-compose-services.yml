@@ -21,7 +21,7 @@ services:
     ports:
       - '5432:5432'
     environment:
-      - POSTGRES_PASSWORD=secret
+      - POSTGRES_USERNAME=postgres
     healthcheck:
       test: ["CMD-SHELL", "pg_isready -U postgres"]
       interval: 10s
@@ -45,7 +45,7 @@ services:
     image: selenium/standalone-chrome:latest
     container_name: docker_on_rails_test_chrome
     ports:
-        - 4444:4444
+      - 4444:4444
 
 volumes:
   postgres:
