@@ -34,7 +34,7 @@ services:
         condition: service_healthy
       redis:
         condition: service_healthy
-    image: docker_on_rails_test:1.0.0
+    image: docker_on_rails_test:1.1.0
     healthcheck:
       test: curl -sS http://localhost:3000/healthcheck || exit 1
       interval: 30s
@@ -43,10 +43,10 @@ services:
 
   green:
     <<: *app
-    image: docker_on_rails_test:1.0.1
+    image: docker_on_rails_test:1.1.1
 
   postgres:
-    image: postgres:16.3
+    image: postgres:latest
     volumes:
       - postgres:/var/lib/postgresql/data
       - ../log:/root/log:cached
@@ -57,7 +57,7 @@ services:
       retries: 5
 
   redis:
-    image: redis:7.2.5
+    image: redis:latest
     volumes:
       - redis:/data
     ports:

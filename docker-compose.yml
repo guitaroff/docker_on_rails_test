@@ -12,7 +12,7 @@ services:
         NODE_MAJOR: '20'
         YARN_VERSION: '1.22.5'
         BUNDLER_VERSION: '2.1.4'
-    image: docker_on_rails_test:1.0.0
+    image: docker_on_rails_test:1.1.0
     tmpfs:
       - /tmp
 
@@ -62,7 +62,7 @@ services:
     command: bundle exec sidekiq -C config/sidekiq.yml
 
   postgres:
-    image: postgres:16.3
+    image: postgres:latest
     volumes:
       - .psqlrc:/root/.psqlrc:ro
       - postgres:/var/lib/postgresql/data
@@ -76,7 +76,7 @@ services:
       interval: 5s
 
   redis:
-    image: redis:7.2.5
+    image: redis:latest
     volumes:
       - redis:/data
     ports:
