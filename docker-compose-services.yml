@@ -13,13 +13,16 @@ services:
         condition: service_started
 
   postgres:
-    image: postgres:10.11-alpine
-    container_name: docker_on_rails2_postgres
+    image: postgres:latest
+    container_name: docker_on_rails_test_postgres
     volumes:
       - postgres:/var/lib/postgresql/data
       - ../log:/root/log:cached
     ports:
       - '5432:5432'
+    environment:
+      - POSTGRES_USERNAME=postgres
+      - POSTGRES_PASSWORD=postgres
     healthcheck:
       test: ["CMD-SHELL", "pg_isready -U postgres"]
       interval: 10s
@@ -27,8 +30,8 @@ services:
       retries: 5
 
   redis:
-    image: redis:4.0.9-alpine
-    container_name: docker_on_rails2_redis
+    image: redis:latest
+    container_name: docker_on_rails_test_redis
     volumes:
       - redis:/data
     ports:
@@ -38,15 +41,16 @@ services:
       interval: 1s
       timeout: 3s
       retries: 30
+    command: [sh, -c, "rm -f /data/dump.rdb && redis-server"]
 
   selenium:
-    image: selenium/standalone-chrome-debug:3.141.59
-    container_name: docker_on_rails2_chrome
+    image: selenium/standalone-chrome:latest
+    container_name: docker_on_rails_test_chrome
     ports:
-        - 4444:4444
+      - 4444:4444
 
 volumes:
   postgres:
-    name: docker_on_rails2_volume_postgres
+    name: docker_on_rails_test_volume_postgres
   redis:
-    name: docker_on_rails2_volume_redis
+    name: docker_on_rails_test_volume_redis

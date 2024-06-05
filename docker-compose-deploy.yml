@@ -14,9 +14,9 @@ services:
       dockerfile: .dockerdev/Dockerfile
       target: production
       args:
-        RUBY_VERSION: '2.7.0'
-        PG_MAJOR: '11'
-        NODE_MAJOR: '13'
+        RUBY_VERSION: '3.2.2'
+        PG_MAJOR: '16'
+        NODE_MAJOR: '20'
         YARN_VERSION: '1.22.5'
         BUNDLER_VERSION: '2.1.4'
     environment:
@@ -34,7 +34,7 @@ services:
         condition: service_healthy
       redis:
         condition: service_healthy
-    image: docker_on_rails2:1.0.0
+    image: docker_on_rails_test:1.1.0
     healthcheck:
       test: curl -sS http://localhost:3000/healthcheck || exit 1
       interval: 30s
@@ -43,10 +43,10 @@ services:
 
   green:
     <<: *app
-    image: docker_on_rails2:1.0.1
+    image: docker_on_rails_test:1.1.1
 
   postgres:
-    image: postgres:10.11-alpine
+    image: postgres:latest
     volumes:
       - postgres:/var/lib/postgresql/data
       - ../log:/root/log:cached
@@ -57,7 +57,7 @@ services:
       retries: 5
 
   redis:
-    image: redis:3.2-alpine
+    image: redis:latest
     volumes:
       - redis:/data
     ports:

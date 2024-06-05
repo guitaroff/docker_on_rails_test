@@ -1,5 +1,5 @@
 {
-  "name": "docker_on_rails2",
+  "name": "docker_on_rails_test",
   "private": true,
   "dependencies": {
     "@rails/actioncable": "^6.0.0",
