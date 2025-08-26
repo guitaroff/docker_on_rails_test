@@ -18,7 +18,7 @@ services:
         PG_MAJOR: '16'
         NODE_MAJOR: '20'
         YARN_VERSION: '1.22.5'
-        BUNDLER_VERSION: '2.1.4'
+        BUNDLER_VERSION: '2.7.1'
     environment:
       - VIRTUAL_HOST=whoami.local
       - WEB_CONCURRENCY=1

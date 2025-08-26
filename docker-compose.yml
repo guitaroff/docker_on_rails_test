@@ -11,7 +11,7 @@ services:
         PG_MAJOR: '16'
         NODE_MAJOR: '20'
         YARN_VERSION: '1.22.5'
-        BUNDLER_VERSION: '2.1.4'
+        BUNDLER_VERSION: '2.7.1'
     image: docker_on_rails_test:1.1.0
     tmpfs:
       - /tmp
@@ -68,6 +68,8 @@ services:
       - postgres:/var/lib/postgresql/data
       - ./log:/root/log:cached
     environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
       - PSQL_HISTFILE=/root/log/.psql_history
     ports:
       - 5432
@@ -87,9 +89,9 @@ services:
       timeout: 3s
       retries: 30
 
-  webpacker:
+  shakapacker:
     <<: *app
-    command: ./bin/webpack-dev-server
+    command: ./bin/shakapacker-dev-server
     ports:
       - '3035:3035'
     volumes:
